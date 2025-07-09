@@ -52,9 +52,9 @@ const upload = multer({
 // Database connection
 const pool = new Pool({
   user: 'postgres',
-  host: 'localhost',
+  host: 'postgres',
   database: 'employee_onboarding',
-  password: 'root',
+  password: 'admin123',
   port: 5432,
 });
 
@@ -370,9 +370,9 @@ app.get('/api/employees', async (req, res) => {
       dateOfBirth: employee.date_of_birth,
       employmentStatus: employee.employment_status,
       aadharNo: employee.aadhar_no,
-      aadharFile: employee.aadhar_file ? `http://localhost:3000/${employee.aadhar_file}` : null,
+      aadharFile: employee.aadhar_file ? `http://13.60.189.220:3098/${employee.aadhar_file}` : null,
       panNo: employee.pan_no,
-      panFile: employee.pan_file ? `http://localhost:3000/${employee.pan_file}` : null,
+      panFile: employee.pan_file ? `http://13.60.189.220:3098/${employee.pan_file}` : null,
       pfNo: employee.pf_no,
       uanNo: employee.uan_no,
       currentAddress: employee.current_address,
@@ -387,7 +387,7 @@ app.get('/api/employees', async (req, res) => {
       accountNo: employee.account_no,
       ifscCode: employee.ifsc_code,
       branchName: employee.branch_name,
-      signature: employee.signature_file ? `http://localhost:3000/${employee.signature_file}` : null,
+      signature: employee.signature_file ? `http://13.60.189.220:3098/${employee.signature_file}` : null,
       consent: employee.consent,
       status: employee.status || 'pending'
     }));
@@ -406,7 +406,7 @@ app.get('/api/employees', async (req, res) => {
           institution: edu.institution,
           year: edu.year,
           score: edu.score,
-          doc: edu.doc_path ? `http://localhost:3000/${edu.doc_path}` : null
+          doc: edu.doc_path ? `http://13.60.189.220:3098/${edu.doc_path}` : null
         }));
 
       employee.employmentDetails = employmentResult.rows
@@ -418,7 +418,7 @@ app.get('/api/employees', async (req, res) => {
           lastProject: emp.last_project,
           companyStartDate: emp.start_date,
           companyEndDate: emp.end_date,
-          doc: emp.doc_path ? `http://localhost:3000/${emp.doc_path}` : null
+          doc: emp.doc_path ? `http://13.60.189.220:3098/${emp.doc_path}` : null
         }));
     });
 
@@ -496,7 +496,7 @@ app.use((err, req, res, next) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3098;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

@@ -1170,7 +1170,7 @@ tr:hover {
 
     async function fetchEmployees() {
         try {
-            const response = await fetch('http://localhost:3000/api/employees');
+            const response = await fetch('http://13.60.189.220:3098/api/employees');
             if (!response.ok) throw new Error('Failed to fetch employees');
             return await response.json();
         } catch (error) {
@@ -1182,7 +1182,7 @@ tr:hover {
 
     async function updateEmployeeStatus(employeeId, status) {
         try {
-            const response = await fetch(`http://localhost:3000/api/employees/${employeeId}/status`, {
+            const response = await fetch(`http://13.60.189.220:3098/api/employees/${employeeId}/status`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ status })
@@ -1211,7 +1211,7 @@ tr:hover {
         }
 
         const fileName = fileUrl.split('/').pop() || 'Document';
-        const downloadUrl = `http://localhost:3000/api/download/${encodeURIComponent(fileName)}`;
+        const downloadUrl = `http://13.60.189.220:3098/api/download/${encodeURIComponent(fileName)}`;
 
         return `
             <p class="file-name">${fileName}</p>
@@ -1479,7 +1479,7 @@ tr:hover {
     clearRecordsBtn.addEventListener('click', () => alertDialog.style.display = 'flex');
     confirmClearBtn.addEventListener('click', async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/employees', { method: 'DELETE' });
+            const response = await fetch('http://13.60.189.220:3098/api/employees', { method: 'DELETE' });
             if (!response.ok) throw new Error('Failed to clear records');
             alertDialog.style.display = 'none';
             showNotification('All records cleared successfully', 'success');
